@@ -128,3 +128,27 @@ const t4 = [
 
 const file = process.argv[2]
 writeFileSync(file, JSON.stringify(t4, null, 2))
+
+// ;(async ()=> {
+//   const resp: { spiders: Array<{
+//     api: string
+//     key: string
+//     name: string
+//     type: 4
+//   }> } = await (await fetch("https://learnpython.ggff.net/api/list_spiders")).json()
+//   const data = resp.spiders.map(item=> {
+//     const { api, key, name } = item
+//     return <Iconfig>{
+//       id: key,
+//       name,
+//       api,
+//       nsfw: false,
+//       type: 1,
+//       extra: {
+//         template: "t4",
+//       }
+//     }
+//   })
+//   const file2 = process.argv[3]
+//   writeFileSync(file2, JSON.stringify(data, null, 2))
+// })()
