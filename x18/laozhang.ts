@@ -121,7 +121,25 @@ export default class Laozhang implements Handle {
 
   async getDetail() {
     const id = env.get<string>("movieId")
-    const params = new URL(`${env.baseUrl}${id}`).searchParams;
+    function getUrlQueryString(url: string) {
+      const startIdx = url.indexOf("?")
+      if (startIdx <= -1) return null
+      const qs = url.substring(startIdx + 1)
+      const params = qs.split("&")
+      const result: Record<string, any> = {}
+      for (const param of params) {
+        const [key, value] = param.split("=")
+        result[key] = value
+      }
+      return {
+        ...result,
+        get(key: string, defualtValue = ""): any {
+          return result[key] ?? defualtValue
+        }
+      }
+    }
+    const params = getUrlQueryString(id)
+    if (!params) return {} as any
     let video = params.get("v") || ""
     const mid = params.get("m") || ""
     if (mid) {
