@@ -7,6 +7,7 @@ export default class HsckApp implements Handle {
       name: "黄色仓库",
       // TODO(d1y): 上游需要支持动态获取域名
       api: "http://6613ck.cc",
+      type: 1,
       nsfw: true,
       extra: {
         gfw: false,
