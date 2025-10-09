@@ -11,7 +11,7 @@ export default class HsckApp implements Handle {
       nsfw: true,
       extra: {
         gfw: false,
-        searchLimit: 16,
+        searchLimit: 36,
       }
     }
   }
