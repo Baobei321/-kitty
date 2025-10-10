@@ -31,19 +31,13 @@ export default class hanjukankan implements Handle {
     const url = `${env.baseUrl}${cate}?page=${page}`
     const html = await req(url)
     const $ = kitty.load(html)
-
-    return $('.module-poster-item')
-      .toArray()
-      .map(item => {
-        const a = $(item).find("a")
-        const img = $(item).find('img')
-        return {
-          id: a.attr('href') ?? "",
-          title: a.attr('title') || img.attr('alt') || "",
-          cover: img.attr('data-original') || img.attr('src') || "",
-          remark: $(item).find('.module-item-note').text().trim() || ""
-        }
-      })
+    return $('a.module-poster-item.module-item').toArray().map(item => {
+      const id = $(item).attr("href") ?? ""
+      const title = $(item).attr("title") ?? ""
+      const cover = $(item).find("img").attr("data-original") ?? ""
+      const remark = $(item).find(".module-item-note").text().trim()
+      return { id, title, cover, remark }
+    })
   }
 
   async getDetail() {
@@ -67,13 +61,7 @@ export default class hanjukankan implements Handle {
       playlist.push({ title: lineTitle, videos })
     })
 
-    return {
-      id,
-      title,
-      cover,
-      desc,
-      playlist
-    }
+    return { id, title, cover, desc, playlist }
   }
 
   async getSearch() {
