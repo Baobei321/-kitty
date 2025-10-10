@@ -10,7 +10,7 @@ function getChinaDate() {
   return chinaDate.replace(/^(\d{2})/, "").replace(/\//g, '/')
 }
 
-const kPageUrl = `https://gist.githubusercontent.com/d1y/4d0551fc8105c9d57f85da8cbbdc8b2e/raw/93aa8853c7bc6be7f0c4bde9aec82f2dd59a32b4/fabu.html`
+const kPageUrl = `https://gist.githubusercontent.com/d1y/4d0551fc8105c9d57f85da8cbbdc8b2e/raw/fabu.html`
 
 const config = {
   sponsorship: "https://s2.loli.net/2025/09/24/ByRvOsQhWzKLXNo.jpg",
